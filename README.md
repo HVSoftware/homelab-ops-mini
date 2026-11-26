@@ -1,6 +1,6 @@
 # homelab-ops-mini
 
-Mini-project voor Ansible-beheer van één Ubuntu VM met Suricata.
+Mini-project voor Ansible-beheer van één Ubuntu VM met Suricata, naast de [homelab-deelnemershandleiding](https://github.com/HVSoftware/homelab).
 
 Bewust minimaal: één host, één playbook, geen vault, geen Signal, geen roles.
 
@@ -25,4 +25,4 @@ uvx --from ansible-core ansible-playbook -i inventory/hosts.yml playbooks/vm-set
 
 Per stap draai je `--tags check`, `--tags update` of `--tags suricata`.
 
-Zie `docs/flow.md` voor het stroomdiagram.
+Zie [docs/flow.md](docs/flow.md) voor het stroomdiagram.
