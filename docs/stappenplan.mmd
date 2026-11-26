@@ -1,0 +1,13 @@
+flowchart TD
+    A["Slim Stappenplan (Ansible)"] --> B["1. Controle<br/>Is de computer geschikt?"]
+    B --> C["2. Update<br/>Systeem en programma's bijwerken"]
+    C --> D["3. Installatie<br/>Applicatie installeren &amp; instellen"]
+    D --> E["4. Resultaat<br/>Melden dat alles klaar is"]
+
+    classDef start fill:#e8f0fe,stroke:#3367d6,color:#1a1a1a;
+    classDef step fill:#e6f4ea,stroke:#137333,color:#1a1a1a;
+    classDef done fill:#fef7e0,stroke:#b06000,color:#1a1a1a;
+
+    class A start;
+    class B,C,D step;
+    class E done;
