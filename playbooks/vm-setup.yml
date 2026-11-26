@@ -1,0 +1,45 @@
+---
+- name: IDS-01 controleren, updaten en Suricata installeren
+  hosts: ids
+  become: true
+  gather_facts: true
+
+  tasks:
+    - name: Controleer omgeving
+      ansible.builtin.assert:
+        that:
+          - ansible_distribution == 'Ubuntu'
+          - ansible_memfree_mb > 512
+        fail_msg: "Verwacht Ubuntu met meer dan 512 MB vrij geheugen"
+      tags: [check]
+
+    - name: Update packages
+      ansible.builtin.apt:
+        update_cache: true
+        cache_valid_time: 3600
+        upgrade: dist
+      tags: [update]
+
+    - name: Installeer Suricata
+      ansible.builtin.apt:
+        name: suricata
+        state: present
+      tags: [suricata]
+
+    - name: Start Suricata
+      ansible.builtin.systemd:
+        name: suricata
+        enabled: true
+        state: started
+      tags: [suricata]
+
+    - name: Lees versie
+      ansible.builtin.command: suricata -V
+      register: suricata_version
+      changed_when: false
+      tags: [suricata]
+
+    - name: Toon resultaat
+      ansible.builtin.debug:
+        msg: "{{ inventory_hostname }} gereed: {{ suricata_version.stdout }}"
+      tags: [check, suricata]
