@@ -1,6 +1,6 @@
 # homelab-ops-mini
 
-Mini-project voor Ansible-beheer van één Ubuntu VM met Suricata, naast de [homelab-deelnemershandleiding](https://github.com/HVSoftware/homelab).
+Mini-project voor Ansible-beheer van één Ubuntu VM met Suricata.
 
 Bewust minimaal: één host, één playbook, geen vault, geen Signal, geen roles.
 
